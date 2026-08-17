@@ -50,6 +50,11 @@ DATABASE_URL=postgresql://user:password@localhost:5432/expense_tracker
 JWT_SECRET=a_long_random_string
 ```
 
+Generate a strong `JWT_SECRET`:
+```bash
+python -c "import secrets; print(secrets.token_hex(32))"
+```
+
 ### Running
 
 ```bash

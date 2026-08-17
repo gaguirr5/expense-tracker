@@ -1,11 +1,13 @@
 from fastapi import FastAPI
 from database import engine, Base
 from sqlalchemy import text
-import models
+from auth import router as auth_router
+import models  # noqa: F401 — imported for its side effect: registers User with Base
 
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+app.include_router(auth_router)
 
 
 @app.get("/")
